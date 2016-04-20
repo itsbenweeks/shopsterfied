@@ -1,0 +1,11 @@
+mysql-server
+apache2
+libapache2-mod-php5
+php5-mysql
+php5-gd
+php-pear
+php-apc
+php5-curl
+curl
+lynx-cur
+phpmyadmin
