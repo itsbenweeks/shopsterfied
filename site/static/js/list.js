@@ -22,10 +22,11 @@ ItemList.prototype.addItem = function(item) {
     catch(err) {
         throw(err);
     }
+    var newItem = jQuery.extend(true, {}, item);
     var list = this.list;
-    var priority = item['priority'];
+    var priority = newItem['priority'];
     var index = this.findIndex(priority);
-    list.splice(index, 0, item);
+    list.splice(index, 0, newItem);
     return index;
 };
 
@@ -36,6 +37,14 @@ ItemList.prototype.clearList = function() {
 ItemList.prototype.removeItem = function(index) {
     return this.list.splice(index, 1);
 };
+
+ItemList.prototype.trim = function() {
+    for (i = this.list.length - 1; i >= 0; i--) {
+         if (this.list[i]['quantity'] == 0) {
+             this.removeItem(i);
+         }
+     }
+}
 
 ItemList.prototype.bind = function(obj) {
     var method = this,
