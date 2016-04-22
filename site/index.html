@@ -13,31 +13,37 @@
 </head>
 
 <body class="bg--off-white">
-  <header class="bg--off-white">
+  <header>
     <div class="txt--center">
-        <h2><i class="fa fa-shopping-basket"></i>Shopsterfied</h2>
+        <h1 class="h2"><i class="fa fa-shopping-basket"></i>Shopsterfied</h1>
     </div>
   </header>
 
-  <div class="px2 shoppingList grd">
-      <h4>Shopping List</h4>
-      <div class="grd-row">
+  <section class="measure py1">
+  <div class="grd" id="shoppingList">
+      <h2 class="h3">Shopping List</h2>
+      <div class="grd-row h3">
       <div class="grd-row-col-5-6">
-          <input type="text" name="sListSelector" maxlength="50" list="sLists" style="width:95%"/>
+          <input type="text" placeholder="Load, Edit, or Delete a Shopping List" name="sListSelector" id="sListSelector" maxlength="50" list="sLists" style="width:95%"/>
+          <datalist id="sLists">
+          </datalist>
       </div>
       <div class="txt--center grd-row-col-1-6">
-          <a class="fa fa-download" onclick="shopping.storeList($, 'shoppingList';)"></a>
-          <a class="fa fa-upload" onclick="shopping.loadList($, 'shoppingList';)"></a>
-          <a class="fnt--red fa fa-remove" onclick="shopping.clearList($, 'shoppingList';)"></a>
+          <a class="fa fa-download" onclick="shopping.storeList($, 'shoppingList');"></a>  
+          <a class="fa fa-upload" onclick="shopping.loadList($, 'shoppingList');"></a>  
+          <a class="fnt--red fa fa-remove" onclick="shopping.clearList($, 'shoppingList');"></a>
       </div>
       </div>
-    <table class="shoppingList">
+
+    <table id="shoppingList" class="h3">
+
       <colgroup>
         <col width="15%">
         <col width="45%">
         <col width="20%">
         <col width="20%">
       </colgroup>
+
       <thead>
         <tr>
           <th>Priority</th>
@@ -46,55 +52,68 @@
           <th>Quantity</th>
         </tr>
       </thead>
+
       <tbody>
       </tbody>
+
       <tfoot>
-        <tr class="itemAdd">
-          <td class="itemPriority"><input type="number" id=
-          "item-priority" taborder="1" name="priority" min="1" placeholder="1" pattern=
+        <tr id="itemAdd">
+
+          <td><input type="number" id=
+          "itemPriority" taborder="1" name="priority" min="1" placeholder="1" pattern=
           "\d+" title="Item Priority"/></td>
 
-          <td class="itemName"><input type="text" id="itemName"
+          <td><input type="text" id="itemName"
           name="itemName" taborder="2" placeholder="35 Char or less..." pattern="^[\w\W]{1,35}" title=
           "Item Name"/></td>
 
-          <td class="itemPrice"><input type="number" id="itemPrice"
+          <td><input type="number" id="itemPrice"
           taborder="3" name="price" placeholder="10.00" min="0.01" step="0.01" pattern="\$?[\d]+(\.\d{0,2})?" title=
           "Item Price"/></td>
 
-          <td class="itemQuantity"><input type="number" id=
+          <td><input type="number" id=
           "itemQuantity" taborder="4" name="quantity" min="1" placeholder="1" pattern=
           "\d+" title="Item Quantity"/></td>
+
         </tr>
+
       </tfoot>
+
     </table>
+
+      <div class="grd-row">
+          <div class="btn--green h3 grd-row-col-6" id="addItem" onclick="shopping.addItem($);"><i class="fa fa-plus" taborder="5"/></i> Add Item</div>
+      </div>
   </div>
+</section>
+
+<section class="p1 measure">
+      <div class="btn--red py1" id="alert" style="display: none;"> </div>
+      <div class="grd-row">
+          <label for="budget" class="h3">Budget</label>
+          <input class="h3" type="number" id="budget" name="budget" placeholder="100.00" step="0.01" min="0" pattern="\$?[\d]+(\.\d{0,2})?"/>
+          <div class="btn--gray grd-row-col-6 h3" id="shop" onclick="shopping.shop($)">Start Shopping</div>
+      </div>
+  </div>
+</section>
 
 
-  <div class="px2 grd">
-      <div class="btn--red px2 alert" style="display: none;"> </div>
-      <div class="grd-row">
-          <div class="btn--green grd-row-col-6" id="addItem" onclick="shopping.addItem($);"><i class="fa fa-plus"/></i> Add Item</div>
-    </div>
-    <div class="grd-row">
-        <label for="budget">Budget</label>
-        <input type="number" id="budget" name="budget" placeholder="100.00" step="0.01" min="0" pattern="\$?[\d]+(\.\d{0,2})?"/>
-        <div class="btn--gray grd-row-col-6 shop" onclick="shopping.shop($)">Start Shopping</div>
-    </div>
-</div>
-<div class="px2 purchaseList grd">
-      <h4>Purchase List</h4>
-      <div class="grd-row">
+<section class="measure">
+<div class="py1 grd" id="purchaseList">
+      <h2 class="h3">Purchase List</h2>
+      <div class="grd-row h3">
       <div class="grd-row-col-5-6">
-          <input type="text" name="pListSelector" maxlength="50" list="pLists" style="width:95%"/>
+          <input type="text" placeholder="Load, Edit, or Delete a Purchase List" name="pListSelector" maxlength="50" list="pLists" style="width:95%"/>
+          <datalist id="pLists">
+          </datalist>
       </div>
       <div class="txt--center grd-row-col-1-6">
-          <a class="fa fa-download" onclick="shopping.storeList($, 'shoppingList';)"></a>
-          <a class="fa fa-upload" onclick="shopping.loadList($, 'shoppingList';)"></a>
-          <a class="fnt--red fa fa-remove" onclick="shopping.clearList($, 'shoppingList';)"></a>
+          <a class="fa fa-download" onclick="shopping.storeList($, 'purchaseList');"></a>
+          <a class="fa fa-upload" onclick="shopping.loadList($, 'purchaseList');"></a>
+          <a class="fnt--red fa fa-remove" onclick="shopping.clearList($, 'purchaseList');"></a>
       </div>
       </div>
-      <table class="purchaseList">
+      <table id="purchaseList" class="h3">
           <colgroup>
               <col width="15%">
               <col width="45%">
@@ -113,5 +132,6 @@
           </tbody>
       </table>
   </div>
+  </section>
   </body>
   </html>

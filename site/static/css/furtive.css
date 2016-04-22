@@ -616,7 +616,10 @@ pre, code {
   font-weight: bold; }
 
 .caps, table th {
-  font-variant: small-caps; }
+  font-variant: small-caps; 
+  font-size: 1.999rem;
+  }
+
 
 .justify {
   text-align: justify; }
