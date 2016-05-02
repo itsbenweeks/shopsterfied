@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Shopsterfied</title>
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="static/css/furtive.css" type="text/css"/>
+  <link rel="stylesheet" href="static/css/font-awesome.css" type="text/css"/>
+  <link rel="stylesheet" href="static/css/site.css" type="text/css"/>
+  <script src="static/js/jquery.js" type="text/javascript"></script>
+  <script src="static/js/list.js" type="text/javascript"></script>
+</head>
+
+<body class="bg--off-white">
+  <header>
+    <div class="txt--center">
+        <h1 class="h2"><i class="fa fa-shopping-basket"></i>Shopsterfied</h1>
+    </div>
+  </header>
+
+  <section class="measure py1">
+  <div class="grd" id="shoppingList">
+      <h2 class="h3">Shopping List</h2>
+      <div class="grd-row h3">
+      <div class="grd-row-col-4-6">
+          <input type="text" placeholder="Name of List" name="sListSelector" id="sListSelector" maxlength="50" list="sLists"/> 
+          <datalist id="sLists">
+          </datalist>
+      </div>
+      <div class="txt--center grd-row-col-2-6">
+          <a class="fa fa-download" onclick="shopping.storeList('shoppingList');"></a>  
+          <a class="fa fa-upload" onclick="shopping.loadList('sListSelector');"></a>  
+          <a class="fnt--red fa fa-remove" onclick="shopping.clearList('shoppingList');"></a>
+      </div>
+      </div>
+
+    <table id="shoppingList" class="h3">
+
+      <colgroup>
+        <col width="15%">
+        <col width="45%">
+        <col width="25%">
+        <col width="15%">
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Qty</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+
+      <tfoot>
+        <tr id="itemAdd">
+
+          <td><input type="number" id=
+          "itemPriority" taborder="1" name="priority" min="1" placeholder="1" pattern=
+          "\d+" title="Item Priority"/></td>
+
+          <td><input type="text" id="itemName"
+          name="itemName" taborder="2" placeholder="35 or less..." pattern="^[\w\W]{1,35}" title=
+          "Item Name"/></td>
+
+          <td><input type="number" id="itemPrice"
+          taborder="3" name="price" placeholder="10.00" min="0.01" step="0.01" pattern="\$?[\d]+(\.\d{0,2})?" title=
+          "Item Price"/></td>
+
+          <td><input type="number" id=
+          "itemQuantity" taborder="4" name="quantity" min="1" placeholder="1" pattern=
+          "\d+" title="Item Quantity"/></td>
+
+        </tr>
+
+      </tfoot>
+
+    </table>
+
+      <div class="grd-row">
+          <div class="btn--green h3 grd-row-col-6" id="addItem" onclick="shopping.addItem();"><i class="fa fa-plus" taborder="5"/></i> Add Item</div>
+      </div>
+  </div>
+</section>
+
+<section class="p1 measure">
+      <div class="btn--red py1" id="alert" style="display: none;"> </div>
+      <div class="grd-row">
+          <label for="budget" class="h3">Budget</label>
+          <input class="h3" type="number" id="budget" name="budget" placeholder="100.00" step="0.01" min="0" pattern="\$?[\d]+(\.\d{0,2})?"/>
+          <div class="btn--gray grd-row-col-6 h3" id="shop" onclick="shopping.shop()">Start Shopping</div>
+      </div>
+  </div>
+</section>
+
+
+<section class="measure">
+<div class="py1 grd" id="purchaseList">
+      <h2 class="h3">Purchase List</h2>
+      <div class="grd-row h3">
+      <div class="grd-row-col-4-6">
+          <input type="text" placeholder="Name of List" name="pListSelector" id="pListSelector" maxlength="50" list="pLists"/> 
+          <datalist id="pLists">
+          </datalist>
+      </div>
+      <div class="txt--center grd-row-col-2-6">
+          <a class="fa fa-download" onclick="shopping.storeList('purchaseList');"></a>
+          <a class="fa fa-upload" onclick="shopping.loadList('pListSelector');"></a>
+          <a class="fnt--red fa fa-remove" onclick="shopping.clearList('purchaseList');"></a>
+      </div>
+      </div>
+      <div class="grd-row">
+      <table id="purchaseList" class="h3" style="width:100%;">
+          <colgroup>
+              <col width="55%">
+              <col width="25%">
+              <col width="20%">
+          </colgroup>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+  </div>
+  </div>
+  </section>
+  <script src="static/js/pouchdb.js" type="text/javascript"></script>
+  <script src="static/js/shop.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    shopping.loadDataLists();
+  </script>
+  </body>
+  </html>
