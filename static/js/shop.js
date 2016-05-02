@@ -116,6 +116,7 @@ Shopping.prototype.editItem = function( listID, index ) {
 }
 
 Shopping.prototype.shop = function() {
+    this.shoppingList.list = [];
     var shoppingList = this.shoppingList.list;
     var purchaseList = this.purchaseList.list;
     console.log( "Let's Go Shopping!" )
@@ -137,7 +138,8 @@ Shopping.prototype.shop = function() {
     this.shoppingList.trim();
     this.drawList( this.shoppingList.list, "shoppingList" );
     this.drawList( this.purchaseList.list, "purchaseList" );
-    $( "#budget" ).val( budget.toString() );
+    $( "#budget" ).val( budget.toFixed(2).toString() );
+
 }
 
 Shopping.prototype.storeList = function( listType ) {
